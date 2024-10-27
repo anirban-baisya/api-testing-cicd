@@ -15,14 +15,14 @@ jobs:
     steps:
       # Check out the code from the repository
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Set up Node.js environment
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           # Specify the version of Node.js to use
-          node-version: '14'
+          node-version: 20
 
       # Install dependencies
       - name: Install dependencies
