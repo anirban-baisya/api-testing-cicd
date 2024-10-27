@@ -14,6 +14,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          
+        # Install all dependencies from package.json
+      - name: Install dependencies from package.json
+        run: npm install
 
       - name: Install dependencies
         run: npm install -g newman
