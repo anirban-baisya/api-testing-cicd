@@ -1,0 +1,33 @@
+# Define the name of the workflow
+name: API Integration Tests
+
+# Specify the events that trigger the workflow
+on: [push, pull_request]
+
+# Define the jobs to be executed
+jobs:
+  # Define a job named "test"
+  test:
+    # Specify the runner environment
+    runs-on: ubuntu-latest
+
+    # Define the steps to be executed in the job
+    steps:
+      # Check out the code from the repository
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          # Specify the version of Node.js to use
+          node-version: '14'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install -g newman 
+
+      # Run Postman tests using Newman
+      - name: Run Postman tests with Newman
+        run: newman run api_tests.postman_collection.json #Run Tests with Newman (CLI for Postman)
