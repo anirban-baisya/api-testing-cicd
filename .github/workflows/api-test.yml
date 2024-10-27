@@ -22,5 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install -g newman
 
+      - name: Start the API server
+        # Start the server in the background && wait 5 seconds for server to start
+        run: node index.js & sleep 5 
+        
       - name: Run Postman tests with Newman
         run: newman run api_tests.postman_collection.json
